@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/cd_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E3E0E0"
+        android:paddingTop="10dp"
+        android:paddingBottom="6dp">
+
+        <ImageView
+            android:id="@+id/cd_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:id="@+id/cd_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/cd_back"
+            android:text="Chap"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/cd_chapter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/cd_c"
+            android:text="
+"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/cd_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cd_header"
+        android:layout_above="@+id/cd_footer"/>
+    <LinearLayout
+        android:id="@+id/cd_footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/footer_chapter_detail_bg"
+        android:weightSum="4">
+        <ImageView
+            android:id="@+id/cd_Pre"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/previous"/>
+        <ImageView
+            android:id="@+id/cd_Download"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/cloud"/>
+        <ImageView
+            android:id="@+id/cd_Comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/comments"/>
+        <ImageView
+            android:id="@+id/cd_Next"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            android:src="@drawable/next"/>
+    </LinearLayout>
+</RelativeLayout>

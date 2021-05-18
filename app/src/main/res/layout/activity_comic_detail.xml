@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/dt_footer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="2dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/dt_header"
+                android:layout_width="match_parent"
+                android:layout_height="270dp">
+
+                <ImageView
+                    android:id="@+id/dt_img2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/vldp" />
+
+                <ImageView
+                    android:id="@+id/dt_back"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/back_arrow" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="30dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/dt_img1"
+                        android:layout_width="125dp"
+                        android:layout_height="180dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentBottom="true"
+                        android:src="@drawable/vldp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/dt_comicname1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="7dp"
+                            android:text="Người Ở Rể Bị Ép Thành Phản Diện"
+                            android:textColor="@color/white"
+                            android:textSize="18dp" />
+
+                        <TextView
+                            android:id="@+id/dt_trangthai"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/dt_comicname1"
+                            android:layout_marginLeft="7dp"
+                            android:text="Trạng thái: Đang ra"
+                            android:textColor="@color/white" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/dt_trangthai"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginLeft="7dp"
+                            android:layout_marginTop="7dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/star" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/star" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/star" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/star" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/star" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/dt_comic_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/dt_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dt_header"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:stretchColumns="3"
+                android:weightSum="4">
+
+                <LinearLayout
+                    android:id="@+id/dt_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dt_view"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="#DF3529" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Lượt Xem"
+                        android:textColor="#131313" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dt_2"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="3932"
+                        android:textColor="#DF3529" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Theo dõi"
+                        android:textColor="#131313" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dt_3"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="#DF3529" />
+
+                    <TextView
+                        android:id="@+id/dt_comment2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Thảo luận"
+                        android:textColor="#131313" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/dt_4"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="4606"
+                        android:textColor="#DF3529" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Đánh giá"
+                        android:textColor="#131313" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/dt_space1"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/dt_nav"
+                android:background="#E4E0E0" />
+
+            <RelativeLayout
+                android:id="@+id/dt_nav2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dt_space1"
+                android:paddingLeft="3dp"
+                android:paddingTop="7dp"
+                android:paddingBottom="7dp">
+
+                <TextView
+                    android:id="@+id/dt_dsc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Danh sách chương"
+                    android:textColor="#DF3529"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/dt_lastchapter1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"
+                    android:text="Chap 96"
+                    android:textSize="17dp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="1dp"
+                    android:src="@drawable/right_arrow" />
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/dt_space2"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/dt_nav2"
+                android:background="#E4E0E0" />
+
+            <LinearLayout
+                android:id="@+id/dt_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dt_space2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tác giả"
+                        android:textColor="#DF3529"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/dt_tacgia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingLeft="16dp"
+                        android:text="Đang cập nhật"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số chương"
+                        android:textColor="#DF3529"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/dt_lastchapter2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingLeft="16dp"
+                        android:text="Chapter 96"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chương mới"
+                        android:textColor="#DF3529"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingLeft="16dp"
+                        android:text="7 giờ trước"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thể loại"
+                        android:textColor="#DF3529"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/dt_theloai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="16dp"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/dt_space3"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/dt_info"
+                android:background="#E4E0E0" />
+
+            <TextView
+                android:id="@+id/dt_comicname2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dt_space3"
+                android:paddingLeft="5dp"
+                android:paddingTop="7dp"
+                android:text="Người Ở Rể Bị Ép Thành Phản Diện"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:id="@+id/dt_summary"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/dt_comicname2"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingRight="5dp"
+                android:text="Một tác giả tiểu thuyết mạng trọng sinh vào chính tác phẩm của mình, trở thành vai ác người ở rể Lí Qủa Vũ, cùng nam chính đấu trí đấu dũng, kế duyên với nhiều hông nhan tri kỷ,..."
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/dt_footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="#C3BDBD"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <ImageView
+            android:id="@+id/dt_download"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-20dp"
+            android:layout_marginRight="-20dp"
+            android:paddingTop="5dp"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"
+            android:src="@drawable/download" />
+
+        <TextView
+            android:id="@+id/dt_f2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="#EF4B3F"
+            android:gravity="center"
+            android:text="ĐỌC NGAY"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="-20dp"
+            android:layout_marginRight="-20dp"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:paddingBottom="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bell2" />
+    </LinearLayout>
+</RelativeLayout>

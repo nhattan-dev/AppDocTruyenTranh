@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#D1CDCD">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="3dp"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:id="@+id/thongbao"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="34"
+                android:textColor="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/txtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Đọc truyện"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_toLeftOf="@+id/notification"
+            android:background="#D1CDCD"
+            android:paddingTop="8dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/search" />
+
+        <ImageView
+            android:id="@+id/notification"
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:src="@drawable/bell" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fm_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:visibility="visible">
+
+        <EditText
+            android:id="@+id/txt_search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Tìm truyện" />
+    </FrameLayout>
+
+    <ViewFlipper
+        android:id="@+id/mFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/fm_search"
+        android:layout_margin="10dp"
+        android:autoStart="true"
+        android:flipInterval="3000"
+        android:inAnimation="@anim/fade_in"
+        android:outAnimation="@anim/fade_out"
+        android:visibility="visible"></ViewFlipper>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/mTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mFlipper"
+        app:tabSelectedTextColor="#E15282" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mTabLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp" />
+</RelativeLayout>

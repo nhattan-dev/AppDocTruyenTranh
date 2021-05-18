@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/ci_c"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chap"
+        android:textSize="19dp"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:id="@+id/ci_chapter_id"/>
+    <TextView
+        android:id="@+id/ci_chaptername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="680"
+        android:textSize="19dp"
+        android:textColor="@color/black"
+        android:layout_toRightOf="@+id/ci_c"
+        android:layout_marginLeft="5dp"/>
+    <ImageView
+        android:paddingTop="3dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/padlock"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/ci_c"
+        android:background="?android:attr/listDivider"
+        android:layout_marginBottom="2dp"/>
+</RelativeLayout>

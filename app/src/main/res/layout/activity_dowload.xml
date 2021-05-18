@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent" android:layout_gravity="" android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:id="@+id/dl_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E3E0E0"
+        android:paddingTop="10dp"
+        android:paddingBottom="6dp">
+
+        <ImageView
+            android:id="@+id/dl_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/back_arrow" />
+
+        <TextView
+            android:id="@+id/dl_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/cd_back"
+            android:text="Tải truyện"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+        <CheckBox
+            android:id="@+id/dl_checkbox_all"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <GridView
+        android:id="@+id/dl_GridView1"
+        android:layout_below="@+id/dl_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dl_footer"/>
+    <LinearLayout
+        android:id="@+id/dl_footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="7"
+        android:background="#E3E0E0">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"/>
+        <ImageView
+            android:id="@+id/dl_download"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/download"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/teal_200"/>
+    </LinearLayout>
+</RelativeLayout>

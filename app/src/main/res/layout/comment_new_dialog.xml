@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/comment_new_bg">
+    <EditText
+        android:id="@+id/cm_name_new"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên hiển thị"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:id="@+id/cm_noidung_new"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:layout_height="200dp"
+        android:hint="Nội dung"
+        android:gravity="start"
+        android:padding="10dp"
+        android:inputType="text|textMultiLine"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2">
+        <Button
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/cm_yes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="YES"/>
+        <Button
+            android:id="@+id/cm_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="50dp"
+            android:text="NO"/>
+    </LinearLayout>
+
+</LinearLayout>
