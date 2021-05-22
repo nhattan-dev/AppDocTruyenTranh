@@ -1,6 +1,9 @@
 package com.example.myapplication2.activity;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,12 +14,18 @@ import android.widget.RelativeLayout;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.myapplication2.R;
 import com.example.myapplication2.adapter.ViewPagerAdapter;
+import com.example.myapplication2.handler.AlarmHandler;
 import com.google.android.material.tabs.TabLayout;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class Home extends AppCompatActivity {
@@ -30,6 +39,8 @@ public class Home extends AppCompatActivity {
     private TabLayout mTabLayout;
     public static boolean isLastUpdate;
     public static int position;
+    public static Date lastTime = new Date();
+    public final static String patternSimpleDateFormat = "yyyy-MM-dd'T'HH:mm:ss";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +51,21 @@ public class Home extends AppCompatActivity {
         setFlipper();
         setData();
         setEvent();
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+                try {
+                    lastTime = new SimpleDateFormat(patternSimpleDateFormat).parse(new Date().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                AlarmHandler handler = new AlarmHandler(Home.this);
+                handler.cancelAlarmManager();
+                handler.setAlarmManager();
+//            }
+//        });
+
     }
 
     private void setDefault() {

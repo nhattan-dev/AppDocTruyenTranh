@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.myapplication2.helper.MySQLiteOpenHelper;
 import com.example.myapplication2.m_interface.CRUD;
@@ -58,12 +59,46 @@ public class ReadDAO extends MySQLiteOpenHelper implements CRUD<mChapter, Intege
 
     @Override
     public boolean edit(mChapter mChapter) {
+        int result = 0;
+        try {
+            db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(READ_CHAPTER_ID, mChapter.getChapter_id());
+            values.put(READ_CHAPTER_NAME, mChapter.getName());
+            values.put(READ_COMIC_ID, mChapter.getComic_id());
+            values.put(READ_POSITION, mChapter.getPosition());
+
+            result = (int) db.update(READ_TABLE, values, READ_CHAPTER_ID + " = ?", new String[]{mChapter.getChapter_id() + ""});
+            if (result > 0)
+                return true;
+            else
+                return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db.isOpen())
+                db.close();
+        }
+        Log.e("update", "" + result);
         return false;
     }
 
     @Override
     public mChapter select(int chapter_id) {
-        return null;
+        mChapter mChapter = new mChapter();
+        try {
+            db = this.getReadableDatabase();
+            String query = "SELECT " + READ_POSITION
+                    + " FROM " + READ_TABLE
+                    + " WHERE " + READ_CHAPTER_ID + " = ? ";
+            Cursor cursor = db.rawQuery(query, new String[]{chapter_id + ""});
+            if (cursor.moveToFirst()) {
+                mChapter.setPosition(cursor.getInt(0));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mChapter;
     }
 
     @Override
@@ -71,7 +106,7 @@ public class ReadDAO extends MySQLiteOpenHelper implements CRUD<mChapter, Intege
         ArrayList<mChapter> mChapters = new ArrayList<>();
         try {
 //            String query = "SELECT " + READ_CHAPTER_ID + ", " + READ_CHAPTER_NAME + " FROM " + READ_TABLE;
-            String query = "SELECT " + READ_CHAPTER_ID + ", " + READ_CHAPTER_NAME + " FROM " + READ_TABLE + " WHERE " + READ_COMIC_ID + " = ?";
+            String query = "SELECT " + READ_CHAPTER_ID + ", " + READ_CHAPTER_NAME + " FROM " + READ_TABLE + " WHERE " + READ_COMIC_ID + " = ? ORDER BY " + READ_CHAPTER_NAME + " DESC";
             db = this.getReadableDatabase();
             Cursor cursor = db.rawQuery(query, new String[]{comic_id + ""});
 //            Cursor cursor = db.rawQuery(query, null);

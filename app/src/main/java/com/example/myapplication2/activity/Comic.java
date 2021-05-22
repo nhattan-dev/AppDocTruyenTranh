@@ -13,7 +13,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 //    import com.example.myapplication2.API.Comic_Sub_Information_1;
 //    import com.example.myapplication2.API.Comic_Sub_Information_2;
 //    import com.example.myapplication2.API.Comic_Sub_Information_3;
-import com.example.myapplication2.API.CustomGET;
+import com.example.myapplication2.Service.CustomGET;
 import com.example.myapplication2.R;
 import com.example.myapplication2.fragment.fm_ChapterList;
 import com.example.myapplication2.model.mComic;

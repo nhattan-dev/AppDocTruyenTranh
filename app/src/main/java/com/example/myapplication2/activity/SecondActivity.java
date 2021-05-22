@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.myapplication2.API.doGet;
+import com.example.myapplication2.Service.doGet;
 import com.example.myapplication2.R;
 import com.example.myapplication2.m_interface.BaseObject;
 

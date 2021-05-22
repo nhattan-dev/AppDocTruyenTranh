@@ -1,5 +1,6 @@
 package com.example.myapplication2.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,10 +14,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 //import com.example.myapplication2.API.ChapterListDownloadAPI;
-import com.example.myapplication2.API.doGet;
+import com.example.myapplication2.Service.doGet;
+import com.example.myapplication2.DAO.DowloadDAO;
 import com.example.myapplication2.R;
 import com.example.myapplication2.adapter.DownloadAdapter;
+import com.example.myapplication2.helper.DownloadComicHelper;
 import com.example.myapplication2.m_interface.BaseObject;
+import com.example.myapplication2.m_interface.ByteArrayBaseObject;
 import com.example.myapplication2.model.mChapter;
 
 import org.json.JSONArray;
@@ -25,7 +29,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Download extends AppCompatActivity implements BaseObject {
+import dmax.dialog.SpotsDialog;
+
+public class Download extends AppCompatActivity implements BaseObject, ByteArrayBaseObject {
     ArrayList<mChapter> mChapters, chaptersTemp;
     GridView gridView;
     ImageView dl_download, dl_back;
@@ -35,11 +41,16 @@ public class Download extends AppCompatActivity implements BaseObject {
     public static boolean isAll = false;
     Context context;
     private String api;
+    DowloadDAO dl;
+    public AlertDialog alertDialog;
+    private int size = 0, position = -1;
+    private ArrayList<mChapter> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dowload);
+        dl = new DowloadDAO(this);
         mChapters = new ArrayList<>();
         chaptersTemp = new ArrayList<>();
         this.context = this;
@@ -72,15 +83,27 @@ public class Download extends AppCompatActivity implements BaseObject {
             public void onClick(View v) {
                 //dowload
                 Toast.makeText(getApplication(), "CHỨC NĂNG TẢI HÀNG LOẠT CHƯA PHÁT TRIỂN", Toast.LENGTH_SHORT).show();
-//                for (int i = 0; i < adapter.checkboxs.length; i++) {
-//                    Log.e("" + i, adapter.checkboxs[i] + "");
-//                }
-//
-//                if (isAll){
-//                    //tải tất cả
-//                }else{
-//
-//                }
+                alertDialog = new SpotsDialog(context);
+                alertDialog.show();
+                if (isAll) {
+                    //tải tất cả
+                    list = new ArrayList<>(mChapters);
+                } else {
+                    for (int i = 0; i < adapter.checkboxs.length; i++) {
+                        if (adapter.checkboxs[i]) {
+                            list.add(mChapters.get(i));
+                        }
+                    }
+                }
+                size = list.size();
+
+                for (int i = 0; i < list.size(); i++) {
+                    if (dl.isExists(list.get(i).getChapter_id())) {
+                        Toast.makeText(context, "ĐÃ TẢI CHAP " + list.get(i).getName(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        new DownloadComicHelper(list.get(i), Download.this).execute();
+                    }
+                }
                 //save to db
             }
         });
@@ -134,5 +157,37 @@ public class Download extends AppCompatActivity implements BaseObject {
     @Override
     public void execPost(String data) {
         end();
+    }
+
+    @Override
+    public void startByteArrayAsyncTask() {
+
+    }
+
+    @Override
+    public void execByteArrayAsyncTask(ArrayList<byte[]> data) {
+        if (data.size() >= 1) {
+            mChapters.get(position).setBlobs(data);
+            boolean result = new DowloadDAO(Download.this).insert(mChapters.get(position));
+            if (result) {
+                Toast.makeText(Download.this, "THÀNH CÔNG !", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(Download.this, "THẤT BẠI !", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(Download.this, "THẤT BẠI !", Toast.LENGTH_SHORT).show();
+        }
+
+        endByteArrayAsyncTask();
+    }
+
+    @Override
+    public void errorByteArrayAsyncTask() {
+
+    }
+
+    @Override
+    public void endByteArrayAsyncTask() {
+
     }
 }

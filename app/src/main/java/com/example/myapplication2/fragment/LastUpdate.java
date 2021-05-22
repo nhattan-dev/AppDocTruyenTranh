@@ -1,5 +1,7 @@
 package com.example.myapplication2.fragment;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,11 +15,12 @@ import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 //import com.example.myapplication2.API.LastUpdateAPI;
-import com.example.myapplication2.API.doGet;
+import com.example.myapplication2.Service.doGet;
 import com.example.myapplication2.R;
 import com.example.myapplication2.activity.Comic;
 import com.example.myapplication2.activity.Home;
@@ -40,6 +43,7 @@ public class LastUpdate extends Fragment implements BaseObject {
     com.example.myapplication2.fragment.LastUpdate application;
     SwipeRefreshLayout lu_SwipeRefreshLayout;
     private String api;
+    private final static int NotificationID = 121221323;
 
     public LastUpdate() {
         initData();
@@ -87,6 +91,7 @@ public class LastUpdate extends Fragment implements BaseObject {
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                makeNotification("THÀNH CÔNG");
                 Comic.mComic = mComics.get(position);
                 Intent intent = new Intent(requireContext(), Comic.class);
                 startActivity(intent);

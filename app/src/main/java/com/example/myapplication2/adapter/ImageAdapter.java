@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.myapplication2.R;
 import com.example.myapplication2.model.mImage;
-import com.example.myapplication2.model.mImageDTO;
+import com.example.myapplication2.DTO.mImageDTO;
 
 import java.util.ArrayList;
 
@@ -26,20 +26,25 @@ public class ImageAdapter extends ArrayAdapter<mImage> {
 
     private Context context;
     private ArrayList<mImage> mImages;
-    private ArrayList<mImageDTO> mImageDTOS = new ArrayList<>();
-    public static String comic_name;
+    private mImageDTO[] mImageDTOs;// = new ArrayList<>();
+    public int position = -1;
 
     public ImageAdapter(@NonNull Context context, int resource, @NonNull ArrayList<mImage> objects) {
         super(context, resource, objects);
         this.context = context;
         this.mImages = objects;
+        mImageDTOs = new mImageDTO[mImages.size()];
     }
 
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-//        for (ImageDTO imageDTO : imageDTOs) {
+        this.position = position;
+        if (mImageDTOs[position] != null) {
+            return mImageDTOs[position].getView();
+        }
+//        for (mImageDTO imageDTO : mImageDTOs) {
 //            if (imageDTO.getPosition() == position) {
 //                return imageDTO.getView();
 //            }
@@ -59,7 +64,7 @@ public class ImageAdapter extends ArrayAdapter<mImage> {
                     .thumbnail(0.5f)
                     .crossFade()
                     .diskCacheStrategy(DiskCacheStrategy.ALL).into(img);
-            mImageDTOS.add(new mImageDTO(position, convertView));
+            mImageDTOs[position] = new mImageDTO(position, convertView);
 //                image.setBitmap(((BitmapDrawable) img.getDrawable()).getBitmap());
 //            }else {
 //                img.setImageBitmap(image.getBitmap());

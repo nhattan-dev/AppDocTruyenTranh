@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 //import com.example.myapplication2.API.MostViewAPI;
-import com.example.myapplication2.API.doGet;
+import com.example.myapplication2.Service.doGet;
 import com.example.myapplication2.R;
 import com.example.myapplication2.activity.Comic;
 import com.example.myapplication2.activity.Home;

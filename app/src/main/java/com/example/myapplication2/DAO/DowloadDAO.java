@@ -129,7 +129,7 @@ public class DowloadDAO extends MySQLiteOpenHelper implements CRUD<mChapter, Int
         ArrayList<mChapter> mChapters = new ArrayList<>();
         try {
 //            String query = "SELECT " + CHAPTER_ID + ", " + CHAPTER_NAME + " FROM " + CHAPTER_TABLE;
-            String query = "SELECT " + CHAPTER_ID + ", " + CHAPTER_NAME + " FROM " + CHAPTER_TABLE + " WHERE " + CHAPTER_COMIC_ID + " = ?";
+            String query = "SELECT " + CHAPTER_ID + ", " + CHAPTER_NAME + " FROM " + CHAPTER_TABLE + " WHERE " + CHAPTER_COMIC_ID + " = ? ORDER BY " + CHAPTER_NAME + " DESC";
             db = this.getReadableDatabase();
             Cursor cursor = db.rawQuery(query, new String[]{comic_id + ""});
 //            Cursor cursor = db.rawQuery(query, null);

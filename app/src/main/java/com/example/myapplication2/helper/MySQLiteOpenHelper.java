@@ -21,6 +21,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     protected final static String READ_CHAPTER_ID = "chapter_id";
     protected final static String READ_CHAPTER_NAME = "name";
     protected final static String READ_COMIC_ID = "comic_id";
+    protected final static String READ_POSITION = "position";
 
     protected final static String IMAGE_TABLE = "Image";
     protected final static String IMAGE_CHAPTER_ID = "chapter_id";
@@ -41,7 +42,8 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
             "("+
             READ_CHAPTER_ID + " INTEGER PRIMARY KEY, " +
             READ_CHAPTER_NAME + " TEXT, " +
-            READ_COMIC_ID + " INTEGER " +
+            READ_COMIC_ID + " INTEGER, " +
+            READ_POSITION + " INTEGER " +
             ")";
 
     private String CREATE_IMAGE_TABLE_QUERY = "CREATE TABLE " + IMAGE_TABLE +

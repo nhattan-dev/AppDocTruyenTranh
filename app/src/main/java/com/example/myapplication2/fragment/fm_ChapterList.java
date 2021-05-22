@@ -19,7 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 //import com.example.myapplication2.API.ChapterListAPI;
-import com.example.myapplication2.API.doGet;
+import com.example.myapplication2.Service.doGet;
 import com.example.myapplication2.DAO.DowloadDAO;
 import com.example.myapplication2.DAO.ReadDAO;
 import com.example.myapplication2.R;
@@ -169,8 +169,8 @@ public class fm_ChapterList extends Fragment implements BaseObject {
             JSONArray chapterArray = object.getJSONArray("chapters");
             for (int i = 0; i < chapterArray.length(); i++) {
                 JSONObject jsonObject = chapterArray.getJSONObject(i);
-                mChapters.add(0, new mChapter(jsonObject));
-                chaptersTemp.add(0, new mChapter(jsonObject));
+                mChapters.add(new mChapter(jsonObject));
+                chaptersTemp.add(new mChapter(jsonObject));
             }
             setData();
         } catch (JSONException e) {

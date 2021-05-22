@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 //import com.example.myapplication2.API.CommentAPI;
 //import com.example.myapplication2.API.PostComment;
-import com.example.myapplication2.API.doGet;
-import com.example.myapplication2.API.doPost;
+import com.example.myapplication2.Service.doGet;
+import com.example.myapplication2.Service.doPost;
 import com.example.myapplication2.R;
 import com.example.myapplication2.adapter.CommentAdapter;
 import com.example.myapplication2.m_interface.BaseObject;

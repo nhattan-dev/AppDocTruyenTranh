@@ -1,5 +1,7 @@
 package com.example.myapplication2.model;
 
+import com.example.myapplication2.activity.Home;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class mChapter {
-    private int chapter_id, comic_id, view;
+    private int chapter_id, comic_id, view, position = 0;
     private String name;
     private Date update_time;
     private ArrayList<String> links;
@@ -26,7 +28,8 @@ public class mChapter {
         this.update_time = update_time;
         this.links = links;
     }
-    public mChapter(mChapter mChapter){
+
+    public mChapter(mChapter mChapter) {
         this.chapter_id = mChapter.chapter_id;
         this.comic_id = mChapter.comic_id;
         this.view = mChapter.view;
@@ -35,6 +38,12 @@ public class mChapter {
         this.links = mChapter.links;
     }
 
+    public mChapter(mChapter mChapter, int position) {
+        this.chapter_id = mChapter.chapter_id;
+        this.comic_id = mChapter.comic_id;
+        this.name = mChapter.name;
+        this.position = position;
+    }
 
 
     public mChapter(JSONObject object) {
@@ -43,13 +52,21 @@ public class mChapter {
             this.comic_id = Integer.parseInt(object.getString("comic_id"));
             this.view = Integer.parseInt(object.getString("view"));
             this.name = object.getString("name");
-            this.update_time = new SimpleDateFormat("yyyy-MM-dd").parse(object.getString("update_time"));
+            this.update_time = new SimpleDateFormat(Home.patternSimpleDateFormat).parse(object.getString("update_time"));
             this.links = new ArrayList<>();
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public ArrayList<byte[]> getBlobs() {

@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 //import com.example.myapplication2.API.DownloadChapterAPI;
 //import com.example.myapplication2.API.ImageListAPI;
-import com.example.myapplication2.API.doGet;
+import com.example.myapplication2.Service.doGet;
 import com.example.myapplication2.DAO.DowloadDAO;
 import com.example.myapplication2.DAO.ReadDAO;
 import com.example.myapplication2.R;
@@ -37,6 +37,7 @@ import dmax.dialog.SpotsDialog;
 public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayBaseObject {
 
     ArrayList<mImage> mImages;
+    //    RecyclerView gridView;
     GridView gridView;
     public static mChapter mChapter;
     TextView cd_chapter_name;
@@ -47,6 +48,7 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
     Chapter application;
     doGet m_doGet;
     private String api;
+    ImageAdapter imageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +146,14 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+
+        mChapter.setPosition(imageAdapter.position);
+        new ReadDAO(context).edit(mChapter);
+    }
+
+    @Override
     public void start() {
 
     }
@@ -174,12 +184,16 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
         end();
     }
 
-    ImageAdapter imageAdapter;
 
     private void setData() {
         Log.e("image size", mImages.size() + "");
+//        imageAdapter = new ImageAdapter1(mImages, getApplication());
         imageAdapter = new ImageAdapter(getApplication(), 0, mImages);
         gridView.setAdapter(imageAdapter);
+        int position = new ReadDAO(Chapter.this).select(mChapter.getChapter_id()).getPosition();
+        gridView.setSelection(position);
+        Log.e("position", ""+gridView.getFirstVisiblePosition());
+//        gridView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
