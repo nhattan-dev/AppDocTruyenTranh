@@ -21,7 +21,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 //import com.example.myapplication2.API.ChapterListAPI;
 import com.example.myapplication2.Service.doGet;
 import com.example.myapplication2.DAO.DowloadDAO;
-import com.example.myapplication2.DAO.ReadDAO;
+import com.example.myapplication2.DAO.HasReadDAO;
 import com.example.myapplication2.R;
 import com.example.myapplication2.activity.Chapter;
 import com.example.myapplication2.adapter.ChapterAdapter;
@@ -48,7 +48,7 @@ public class fm_ChapterList extends Fragment implements BaseObject {
     SwipeRefreshLayout lc_refresh;
     View view;
     DowloadDAO dl;
-    ReadDAO readDAO;
+    HasReadDAO hasReadDAO;
     Context context;
     ChapterListViewPagerAdapter chapterListViewPagerAdapter;
 
@@ -58,7 +58,7 @@ public class fm_ChapterList extends Fragment implements BaseObject {
         this.context = context;
         this.chapterListViewPagerAdapter = chapterListViewPagerAdapter;
         dl = new DowloadDAO(context);
-        readDAO = new ReadDAO(context);
+        hasReadDAO = new HasReadDAO(context);
         this.application = this;
         chapterAdapter = new ChapterAdapter(context, 0, mChapters);
         if (!isLoading) {

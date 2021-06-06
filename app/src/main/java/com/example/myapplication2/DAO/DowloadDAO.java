@@ -22,7 +22,7 @@ public class DowloadDAO extends MySQLiteOpenHelper implements CRUD<mChapter, Int
 
     @Override
     public boolean insert(mChapter mChapter) {
-        int result = 0;
+        int result = -1;
         try {
             db = this.getWritableDatabase();
             ContentValues values = new ContentValues();

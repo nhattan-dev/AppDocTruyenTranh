@@ -82,7 +82,7 @@ public class Download extends AppCompatActivity implements BaseObject, ByteArray
             @Override
             public void onClick(View v) {
                 //dowload
-                Toast.makeText(getApplication(), "CHỨC NĂNG TẢI HÀNG LOẠT CHƯA PHÁT TRIỂN", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplication(), "CHỨC NĂNG TẢI HÀNG LOẠT CHƯA PHÁT TRIỂN", Toast.LENGTH_SHORT).show();
                 alertDialog = new SpotsDialog(context);
                 alertDialog.show();
                 if (isAll) {

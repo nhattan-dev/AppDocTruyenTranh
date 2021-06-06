@@ -52,20 +52,9 @@ public class Home extends AppCompatActivity {
         setData();
         setEvent();
 
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-                try {
-                    lastTime = new SimpleDateFormat(patternSimpleDateFormat).parse(new Date().toString());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                AlarmHandler handler = new AlarmHandler(Home.this);
-                handler.cancelAlarmManager();
-                handler.setAlarmManager();
-//            }
-//        });
-
+        AlarmHandler handler = new AlarmHandler(Home.this);
+        handler.cancelAlarmManager();
+        handler.setAlarmManager();
     }
 
     private void setDefault() {

@@ -5,6 +5,7 @@ import android.view.View;
 public class mImageDTO {
     private int position;
     private View view;
+    private boolean isLoaded = false;
 
     public mImageDTO(int position, View view) {
         this.position = position;
@@ -12,6 +13,14 @@ public class mImageDTO {
     }
 
     public mImageDTO() {
+    }
+
+    public boolean isLoaded() {
+        return isLoaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        isLoaded = loaded;
     }
 
     public int getPosition() {

@@ -12,17 +12,17 @@ import com.example.myapplication2.model.mChapter;
 
 import java.util.ArrayList;
 
-public class ReadDAO extends MySQLiteOpenHelper implements CRUD<mChapter, Integer> {
+public class HasReadDAO extends MySQLiteOpenHelper implements CRUD<mChapter, Integer> {
 
     SQLiteDatabase db;
 
-    public ReadDAO(Context context) {
+    public HasReadDAO(Context context) {
         super(context);
     }
 
     @Override
     public boolean insert(mChapter mChapter) {
-        int result = 0;
+        int result = -1;
         try {
             db = this.getWritableDatabase();
             ContentValues values = new ContentValues();
@@ -59,7 +59,7 @@ public class ReadDAO extends MySQLiteOpenHelper implements CRUD<mChapter, Intege
 
     @Override
     public boolean edit(mChapter mChapter) {
-        int result = 0;
+        int result = -1;
         try {
             db = this.getWritableDatabase();
             ContentValues values = new ContentValues();

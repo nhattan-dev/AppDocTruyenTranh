@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.myapplication2.DAO.ReadDAO;
+import com.example.myapplication2.DAO.HasReadDAO;
 import com.example.myapplication2.R;
 import com.example.myapplication2.activity.Chapter;
 import com.example.myapplication2.adapter.ChapterAdapter;
@@ -24,13 +24,13 @@ import java.util.regex.Pattern;
 
 public class fm_HasRead extends Fragment {
     View view;
-    ReadDAO readDAO;
+    HasReadDAO hasReadDAO;
     public static ArrayList<mChapter> mChapters, chaptersTemp;
     public ChapterAdapter adapter;
     GridView gridView;
 
     public fm_HasRead(Context context) {
-        readDAO = new ReadDAO(context);
+        hasReadDAO = new HasReadDAO(context);
         initData();
 //        mChapters = readDAO.selectAll(fm_ChapterList.mComic.getComic_id());
 //        chaptersTemp = new ArrayList<>(mChapters);
@@ -38,10 +38,10 @@ public class fm_HasRead extends Fragment {
 
     private void initData() {
         if (mChapters == null) {
-            mChapters = readDAO. selectAll(fm_ChapterList.mComic.getComic_id());
+            mChapters = hasReadDAO. selectAll(fm_ChapterList.mComic.getComic_id());
         } else {
             mChapters.clear();
-            for (mChapter c : readDAO.selectAll(fm_ChapterList.mComic.getComic_id())) {
+            for (mChapter c : hasReadDAO.selectAll(fm_ChapterList.mComic.getComic_id())) {
                 mChapters.add(c);
             }
         }

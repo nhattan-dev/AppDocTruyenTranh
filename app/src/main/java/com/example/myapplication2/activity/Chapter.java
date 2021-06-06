@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 //import com.example.myapplication2.API.ImageListAPI;
 import com.example.myapplication2.Service.doGet;
 import com.example.myapplication2.DAO.DowloadDAO;
-import com.example.myapplication2.DAO.ReadDAO;
+import com.example.myapplication2.DAO.HasReadDAO;
 import com.example.myapplication2.R;
 import com.example.myapplication2.adapter.ImageAdapter;
 import com.example.myapplication2.fragment.fm_ChapterList;
@@ -106,6 +106,7 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
                             mChapter.setChapter_id(fm_ChapterList.chaptersTemp.get(i - 1).getChapter_id());
                             mChapter.setName(fm_ChapterList.chaptersTemp.get(i - 1).getName());
 
+                            updatePosition();
                             mImages = new ArrayList<>();
                             api = "ChapterApi?chapter_id=" + mChapter.getChapter_id();
                             new doGet(Chapter.this, api).execute();
@@ -124,6 +125,7 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
                             mChapter.setChapter_id(fm_ChapterList.chaptersTemp.get(i + 1).getChapter_id());
                             mChapter.setName(fm_ChapterList.chaptersTemp.get(i + 1).getName());
 
+                            updatePosition();
                             mImages = new ArrayList<>();
                             api = "ChapterApi?chapter_id=" + mChapter.getChapter_id();
                             new doGet(Chapter.this, api).execute();
@@ -149,8 +151,13 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
     protected void onPause() {
         super.onPause();
 
-        mChapter.setPosition(imageAdapter.position);
-        new ReadDAO(context).edit(mChapter);
+//        mChapter.setPosition(imageAdapter.position);
+        updatePosition();
+    }
+
+    private void updatePosition(){
+        mChapter.setPosition(gridView.getFirstVisiblePosition());
+        new HasReadDAO(context).edit(mChapter);
     }
 
     @Override
@@ -161,7 +168,7 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
     @Override
     public void execGet(String data) {
         //insert to db
-        new ReadDAO(context).insert(mChapter);
+        new HasReadDAO(context).insert(mChapter);
 
         try {
             JSONObject object = new JSONObject(data);
@@ -187,13 +194,10 @@ public class Chapter extends AppCompatActivity implements BaseObject, ByteArrayB
 
     private void setData() {
         Log.e("image size", mImages.size() + "");
-//        imageAdapter = new ImageAdapter1(mImages, getApplication());
-        imageAdapter = new ImageAdapter(getApplication(), 0, mImages);
+        int position = new HasReadDAO(Chapter.this).select(mChapter.getChapter_id()).getPosition();
+        imageAdapter = new ImageAdapter(getApplication(), 0, mImages, position, gridView);
         gridView.setAdapter(imageAdapter);
-        int position = new ReadDAO(Chapter.this).select(mChapter.getChapter_id()).getPosition();
-        gridView.setSelection(position);
-        Log.e("position", ""+gridView.getFirstVisiblePosition());
-//        gridView.setLayoutManager(new LinearLayoutManager(this));
+//        gridView.smoothScrollToPosition(position);
     }
 
     @Override
